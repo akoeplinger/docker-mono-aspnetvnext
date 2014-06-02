@@ -1,6 +1,6 @@
 #DOCKER-VERSION 0.9.1
 #
-#VERSION 0.1
+#VERSION 0.1.0
 #
 # A standard Ubuntu 14.04 image including a version of Mono that is required for running ASP.NET vNext projects
 
