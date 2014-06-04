@@ -7,19 +7,17 @@
 FROM    ubuntu:14.04
 MAINTAINER Alexander Köplinger
 
-RUN \
-    sudo apt-get -y install curl unzip git-core build-essential autoconf libtool gettext libgdiplus libgtk2.0-0 xsltproc && \
-	cd /tmp && git clone https://github.com/mono/mono && \
-    cd /tmp/mono && git checkout d8eaf05 && \
-	./autogen.sh --prefix=/usr --with-mcs-docs=no && \
-	make get-monolite-latest && \
-	make -j4 && \
-	sudo make install && \
-	cd / && sudo rm -r /tmp/mono
+ADD   install-mono.sh /tmp/install-mono.sh
+RUN   chmod +x /tmp/install-mono.sh
+RUN   /tmp/install-mono.sh
 
+RUN   useradd -d /home/docker -s /bin/bash -m docker
+USER  docker
+ENV   HOME  /home/docker
+WORKDIR /home/docker
 RUN   mozroots --import --sync
-RUN   curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh
-RUN   git clone https://github.com/davidfowl/HelloWorldVNext /tmp/helloworld
+RUN   /bin/bash -c "curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh && source ~/.kre/kvm/kvm.sh && kvm upgrade"
 
-# Use this to download K runtime in a Bash shell:
-# source ~/.kre/kvm/kvm.sh && kvm upgrade
+RUN   git clone https://github.com/davidfowl/HelloWorldVNext ~/helloworld
+RUN   cd ~/helloworld && /bin/bash -c "kpm restore"
+
