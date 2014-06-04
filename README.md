@@ -16,7 +16,7 @@ To run the image, follow these steps:
 
 The "Hello World" web application should now be running, access it by browsing to http://localhost:8080.
 
-When you exit from the Bash shell, the container will be terminated and all changes are lost.
+When you exit from the Bash shell, the container will be terminated.
 To map a directory from the host machine to the container, you can use the `-v` option, e.g. `-v ~/:/hosthome` will map your home directory to the `/hosthome` directory in the container. This is a simple way to share your own projects with the container.
 
 
