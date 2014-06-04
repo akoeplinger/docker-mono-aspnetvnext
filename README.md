@@ -16,8 +16,8 @@ To run the image, follow these steps:
 
 To run the "Hello World" sample, follow these steps:
 
-1. `git clone https://github.com/davidfowl/HelloWorldVNext /tmp/helloworld`
-2. `cd /tmp/helloworld/src/helloworldweb`
+1. `cd /tmp/helloworld/src/helloworldweb`
+2. Run `kpm restore` to restore the necessary packages
 3. Start the test web server by running `k web`
 
 The "Hello World" web application should now be running, access it by browsing to http://localhost:8080.

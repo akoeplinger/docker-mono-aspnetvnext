@@ -7,20 +7,19 @@
 FROM    ubuntu:14.04
 MAINTAINER Alexander Köplinger
 
-RUN     sudo apt-get -y install curl unzip git-core build-essential autoconf libtool gettext libgdiplus libgtk2.0-0 xsltproc
-WORKDIR /tmp
-RUN     git clone https://github.com/mono/mono
-WORKDIR /tmp/mono
-RUN     git checkout d8eaf05
-RUN     ./autogen.sh --prefix=/usr --with-mcs-docs=no
-RUN     make get-monolite-latest
-RUN     make -j4
-RUN     sudo make install
-WORKDIR /
-RUN     sudo rm -r /tmp/mono
+RUN \
+    sudo apt-get -y install curl unzip git-core build-essential autoconf libtool gettext libgdiplus libgtk2.0-0 xsltproc && \
+	cd /tmp && git clone https://github.com/mono/mono && \
+    cd /tmp/mono && git checkout d8eaf05 && \
+	./autogen.sh --prefix=/usr --with-mcs-docs=no && \
+	make get-monolite-latest && \
+	make -j4 && \
+	sudo make install && \
+	cd / && sudo rm -r /tmp/mono
 
-RUN     mozroots --import --sync
-RUN     curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh
+RUN   mozroots --import --sync
+RUN   curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh
+RUN   git clone https://github.com/davidfowl/HelloWorldVNext /tmp/helloworld
 
-# Use this to download K runtime in a bash shell:
+# Use this to download K runtime in a Bash shell:
 # source ~/.kre/kvm/kvm.sh && kvm upgrade
