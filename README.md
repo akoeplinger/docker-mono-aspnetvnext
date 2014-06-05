@@ -1,6 +1,8 @@
 mono-aspnetvnext Docker image
 =============================
 
+*This repository hosts the Dockerfile used to create the image at [https://index.docker.io/u/akoeplinger/mono-aspnetvnext/](https://index.docker.io/u/akoeplinger/mono-aspnetvnext/). Do __not__ clone this repository, just follow the [instructions](#run-docker-image) below*
+
 The image contains everything needed to play with ASP.NET vNext projects on Mono.
 
 # Requirements
