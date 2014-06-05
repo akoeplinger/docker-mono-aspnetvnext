@@ -11,8 +11,7 @@ ADD   install-mono.sh /tmp/install-mono.sh
 RUN   chmod +x /tmp/install-mono.sh
 RUN   /tmp/install-mono.sh
 
-RUN   mkdir /home/docker
-ENV   HOME  /home/docker
+ENV   HOME  /root
 RUN   mozroots --import --sync
 RUN   /bin/bash -c "curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh && source ~/.kre/kvm/kvm.sh && kvm upgrade"
 
