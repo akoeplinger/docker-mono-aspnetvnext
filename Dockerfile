@@ -11,12 +11,7 @@ ADD   install-mono.sh /tmp/install-mono.sh
 RUN   chmod +x /tmp/install-mono.sh
 RUN   /tmp/install-mono.sh
 
-RUN   useradd -d /home/docker -s /bin/bash -m docker
-RUN   echo 'docker:docker' | chpasswd
-RUN   echo 'docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN   chown -R docker:docker /home/docker
-
-USER  docker
+RUN   mkdir /home/docker
 ENV   HOME  /home/docker
 RUN   mozroots --import --sync
 RUN   /bin/bash -c "curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh && source ~/.kre/kvm/kvm.sh && kvm upgrade"
