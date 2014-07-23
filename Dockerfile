@@ -4,7 +4,7 @@
 #
 # A standard Ubuntu 14.04 image including a version of Mono that is required for running ASP.NET vNext projects
 
-FROM    ubuntu:14.04
+FROM    ubuntu:latest
 MAINTAINER Zachary Jones
 
 RUN apt-get -qqy install libtool autoconf g++ gettext make git unzip && \
