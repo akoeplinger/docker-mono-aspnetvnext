@@ -7,9 +7,17 @@
 FROM    ubuntu:14.04
 MAINTAINER Zachary Jones
 
-ADD   install-mono.sh /tmp/install-mono.sh
-RUN   chmod +x /tmp/install-mono.sh
-RUN   /tmp/install-mono.sh
+RUN apt-get -qqy install libtool autoconf g++ gettext make git unzip && \
+    git clone --depth 1 https://github.com/mono/mono /tmp/mono && \
+    cd /tmp/mono && \
+    git checkout mono-3.6.0-branch && \
+    ./autogen.sh --prefix=/usr && \
+    make get-monolite-latest && \
+    make && \
+    make install && \
+    cd / && \
+    rm -rf /tmp/mono
+RUN mono --version
 
 ENV   HOME  /root
 RUN   mozroots --import --sync
