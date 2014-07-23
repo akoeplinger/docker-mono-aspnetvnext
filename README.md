@@ -19,6 +19,7 @@ To run the image, follow these steps:
  
 #### HelloWorldWeb
 (The 'web' tag has an entrypoint set so that you don't need this step)
+
 4. `cd ~/HelloWorldVNext/src/helloworldweb`
 5. Start the test web server by running `k web`
 
@@ -26,6 +27,7 @@ The "Hello World" web application should now be running, access it by browsing t
 
 #### HelloWorldMVC 
 (The 'mvc' tag has an entypoint set so that you don't need this step)
+
 4. `cd ~HelloWorldVNext/src/hellomvc`
 5. Start the test web server by running `k web`
 
