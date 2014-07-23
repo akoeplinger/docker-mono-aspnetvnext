@@ -18,7 +18,7 @@ RUN   /bin/bash -c "source ~/.kre/kvm/kvm.sh && kvm upgrade -g"
 
 RUN   git clone https://github.com/davidfowl/HelloWorldVNext.git ~/HelloWorldVNext
 
-RUN   cd ~/HelloWorldVNext && kpm restore
+RUN   /bin/bash -c "cd ~/HelloWorldVNext && source ~/.kre/kvm/kvm.sh && kpm restore
 
 
 
