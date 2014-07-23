@@ -5,7 +5,7 @@
 # A standard Ubuntu 14.04 image including a version of Mono that is required for running ASP.NET vNext projects
 
 FROM    ubuntu:14.04
-MAINTAINER Alexander Köplinger
+MAINTAINER Zachary Jones
 
 ADD   install-mono.sh /tmp/install-mono.sh
 RUN   chmod +x /tmp/install-mono.sh
