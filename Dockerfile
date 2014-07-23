@@ -27,7 +27,7 @@ RUN     curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh 
         /bin/bash -c "source ~/.kre/kvm/kvm.sh && kvm upgrade -g"
 
 RUN     git clone https://github.com/davidfowl/HelloWorldVNext.git ~/HelloWorldVNext
-RUN     /bin/bash -c "cd ~/HelloWorldVNext && source ~/.kre/kvm/kvm.sh && kpm restore
+RUN     /bin/bash -c "cd ~/HelloWorldVNext && source ~/.kre/kvm/kvm.sh && kpm restore"
 
 
 
