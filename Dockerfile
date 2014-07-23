@@ -24,7 +24,7 @@ ENV     HOME  /root
 RUN     mozroots --import --sync
 RUN     curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh > /root/kvminstall.sh && \
         sh /root/kvminstall.sh && \
-        /bin/bash -c "source ~/.kre/kvm/kvm.sh && kvm upgrade -g"
+        /bin/bash -c "source ~/.kre/kvm/kvm.sh && kvm upgrade; echo ExitCode=$?"
 
 RUN     git clone https://github.com/davidfowl/HelloWorldVNext.git ~/HelloWorldVNext
 RUN     /bin/bash -c "cd ~/HelloWorldVNext && source ~/.kre/kvm/kvm.sh && kpm restore"
