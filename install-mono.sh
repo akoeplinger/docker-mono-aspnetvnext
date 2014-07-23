@@ -5,7 +5,7 @@ sudo apt-get -y install curl unzip git-core build-essential autoconf libtool get
 cd /tmp
 git clone https://github.com/mono/mono
 cd /tmp/mono
-git checkout d8eaf05
+git checkout mono-3.6.0-branch
 ./autogen.sh --prefix=/usr --with-mcs-docs=no
 
 make get-monolite-latest
