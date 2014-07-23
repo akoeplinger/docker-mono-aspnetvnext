@@ -23,7 +23,7 @@ This downloads and runs the image with your local port 8o forwarded to the conta
 
  
 #### HelloWorldWeb
-`docker run -d -p 80:5000 -t prozachj/docker-mono-aspnetvnext:web`
+`docker run -i -p 80:5000 -t prozachj/docker-mono-aspnetvnext:web`
 
 The 'web' tag has an entrypoint set so that you don't need these steps, but if you are running 'lastest':
 
@@ -34,7 +34,7 @@ The 'web' tag has an entrypoint set so that you don't need these steps, but if y
 The "Hello World" web application should now be running, access it by browsing to http://localhost
 
 #### HelloWorldMVC 
-`docker run -d -p 80:5000 -t prozachj/docker-mono-aspnetvnext:mvc`
+`docker run -i -p 80:5000 -t prozachj/docker-mono-aspnetvnext:mvc`
 
 The 'mvc' tag has an entrypoint set so that you don't need these steps, but if you are running 'lastest':
 
