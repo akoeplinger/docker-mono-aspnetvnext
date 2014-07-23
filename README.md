@@ -7,10 +7,13 @@ The image contains everything needed to play with ASP.NET vNext projects on Mono
 
 * **Docker**: [https://www.docker.io](https://www.docker.io)
 
+# Pull Docker Image
+`docker pull prozachj/docker-mono-aspnetvnext`
+
 # Run Docker image
 To run the image, follow these steps:
 
-1. `docker run -i -p 8080:8080 -t prozachj/mono-aspnetvnext /bin/bash`. This downloads and runs the image with your local port 8080 forwarded to the container and connects you to a Bash shell inside the container.
+1. `docker run -i -p 8080:8080 -t prozachj/docker-mono-aspnetvnext /bin/bash`. This downloads and runs the image with your local port 8080 forwarded to the container and connects you to a Bash shell inside the container.
 2. `cd ~/helloworld/src/helloworldweb`
 3. Run `kpm restore` to restore the necessary packages
 4. Start the test web server by running `k web`
