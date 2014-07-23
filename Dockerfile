@@ -1,20 +1,27 @@
-#DOCKER-VERSION 0.9.1
-#
-#VERSION 0.1.0
-#
-# A standard Ubuntu 14.04 image including a version of Mono that is required for running ASP.NET vNext projects
+FROM    ubuntu:latest
+MAINTAINER      Zachary Jones <prozachj@gmail.com>
 
-FROM    ubuntu:14.04
-MAINTAINER Alexander Köplinger
+RUN     apt-get -qq update
 
-ADD   install-mono.sh /tmp/install-mono.sh
-RUN   chmod +x /tmp/install-mono.sh
-RUN   /tmp/install-mono.sh
+RUN     apt-get -qqy install libtool autoconf g++ gettext make git unzip && \
+        git clone -b mono-3.6.0-branch https://github.com/mono/mono /tmp/mono && \
+        cd /tmp/mono && \
+        ./autogen.sh --prefix=/usr && \
+        make get-monolite-latest && \
+        make && \
+        make install && \
+        cd / && \
+        rm -rf /tmp/mono
+RUN     mono --version
 
-ENV   HOME  /root
-RUN   mozroots --import --sync
-RUN   /bin/bash -c "curl https://raw.githubusercontent.com/graemechristie/Home/KvmShellImplementation/kvmsetup.sh | sh && source ~/.kre/kvm/kvm.sh && kvm upgrade"
+ENV     HOME  /root
+RUN     mozroots --import --sync
+RUN     curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh > /root/kvminstall.sh && \
+        sh /root/kvminstall.sh && \
+        /bin/bash -c "source ~/.kre/kvm/kvm.sh && kvm upgrade; echo ExitCode=$?"
 
-RUN   git clone https://github.com/davidfowl/HelloWorldVNext ~/helloworld
+RUN     git clone https://github.com/davidfowl/HelloWorldVNext.git ~/HelloWorldVNext
+RUN     /bin/bash -c "cd ~/HelloWorldVNext && source ~/.kre/kvm/kvm.sh && kpm restore"
+
 
 
