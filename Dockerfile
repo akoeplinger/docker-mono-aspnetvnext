@@ -13,8 +13,10 @@ RUN   /tmp/install-mono.sh
 
 ENV   HOME  /root
 RUN   mozroots --import --sync
-RUN   /bin/bash -c "curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh | sh && source ~/.kre/kvm/kvm.sh && kvm upgrade"
+RUN   /bin/bash -c "curl https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh | sh"
+RUN   /bin/bash -c "source ~/.kre/kvm/kvm.sh && kvm upgrade -g"
 
-RUN   git clone https://github.com/davidfowl/HelloWorldVNext ~/helloworld
+RUN   git clone https://github.com/aspnet/Home.git /root/helloworld
+
 
 
