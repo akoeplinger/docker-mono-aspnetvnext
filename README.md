@@ -1,3 +1,5 @@
+# Note: Microsoft now provides an official Docker image: [microsoft/aspnet](https://registry.hub.docker.com/u/microsoft/aspnet/). I'm keeping this image around in case people rely on it, but I encourage you to take a look at the official image.
+
 mono-aspnetvnext Docker image
 =============================
 
